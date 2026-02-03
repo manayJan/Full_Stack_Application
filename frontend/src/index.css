@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------- GLOBAL ---------------- */
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-800 antialiased;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont;
+  }
+}
+
+/* ---------------- COMPONENTS ---------------- */
+@layer components {
+  .btn-primary {
+    @apply bg-brand-500 text-white px-5 py-2 rounded-2xl
+           hover:scale-[.99] active:scale-95 shadow-md
+           transition-transform duration-200;
+  }
+
+  .btn-outline {
+    @apply border border-brand-500 text-brand-500 px-5 py-2 rounded-2xl
+           hover:bg-brand-500 hover:text-white transition-colors duration-200;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 rounded-xl border border-slate-300
+           focus:outline-none focus:ring-2 focus:ring-brand-500
+           transition-shadow duration-150;
+  }
+
+  .card {
+    @apply bg-white/80 backdrop-blur-xs rounded-3xl shadow-2xl p-8;
+  }
+
+  .page-container {
+    @apply min-h-screen flex flex-col;
+  }
+
+  .content {
+    @apply flex-grow;
+  }
+}
+
+/* ---------------- ANIMATIONS & UTILITIES ---------------- */
+@layer utilities {
+  .bg-animated-gradient {
+    background: linear-gradient(90deg, rgba(37,99,235,0.12), rgba(139,92,246,0.08), rgba(34,197,94,0.05));
+    background-size: 400% 400%;
+    animation: hue 10s linear infinite;
+  }
+
+  .shimmer {
+    background-image: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.6), rgba(255,255,255,0));
+    background-size: 400px 100%;
+    animation: shimmer 2.2s linear infinite;
+  }
+
+  .blob {
+    filter: blur(40px) saturate(120%);
+    opacity: 0.7;
+    transform: translate3d(0,0,0);
+    animation: float 7s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px) rotate(-3deg); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+@keyframes hue {
+  0% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(120deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+/* small utility for subtle slide-in */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
